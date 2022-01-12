@@ -1,5 +1,5 @@
 import { React, Fragment } from 'react'
-import { AiFillFacebook,AiFillInstagram } from 'react-icons/ai';
+import { BsFacebook, BsInstagram,BsGoogle,BsTwitter,BsLinkedin } from 'react-icons/bs';
 
 /*class Footer extends React.Component{
     render(){
@@ -20,36 +20,34 @@ import { AiFillFacebook,AiFillInstagram } from 'react-icons/ai';
 */
 
 const Footer = (props) => {
-    const customStyle = {
-        backgroundColor: "red",
-        padding: 10,
-        fontFamily: "Arial",
-        color: "white",
-        textSize: 2
-    }
 
-    return <Fragment><footer className="page-footer font-small blue pt-4 text-dark form2">
-        <div className="container-fluid text-center text-md-left">
-            <div className="row">
-                
+    return <Fragment>
+        <footer className="page-footer font-small blue pt-4 text-dark border-top bg-primary">
+            <div className="container-fluid text-center text-md-left">
+                <section class="mb-4">
 
-                <hr className="clearfix w-100 d-md-none pb-0" />
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><BsFacebook /></a>
 
-                <div className="col-md-3 mb-md-0 mb-3">
-                    <h5 className="text-uppercase">Contactos</h5>
-                    <ul className="list-unstyled">
-                        <li><a href="#!"> <AiFillFacebook />Facebook</a></li>
-                        <li><a href="#!"> <AiFillInstagram />Instagram</a></li>
-                    </ul>
-                </div>
-            </div>
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><BsInstagram /></a>
+
+
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><BsGoogle /></a>
+
+
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button" ><BsTwitter /></a>
+
+
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><BsLinkedin /></a>
+
+            </section>
+            
         </div>
 
-        <div className="footer-copyright text-center py-3">© 2020 Copyright:
-            <a href="https://mdbootstrap.com/"> La Bicharraka</a>
+        <div className="footer-copyright text-center py-3 text-light">© 2020 Copyright:
+            <a href="https://mdbootstrap.com/" className='text-light' style={{textDecoration:"none"}}> La Bicharraka</a>
         </div>
 
-    </footer></Fragment>
+    </footer></Fragment >
 
 }
 
