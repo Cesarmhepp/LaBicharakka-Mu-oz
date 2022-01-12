@@ -3,8 +3,16 @@ import React, { useState } from 'react'
 import logo from './img/4415.png'
 import { BsSearch } from 'react-icons/bs';
 import ModalLogin from './ModalLogin'
+import CardWidjet from './CardWidjet'
 
 const NavBar = () => {
+    const ItemListcontainer=()=>{
+        return (
+            <a>Hola Mundo!</a>
+        )
+    }
+
+
 
 
     return <>
@@ -49,10 +57,10 @@ const NavBar = () => {
 
 
                 </Nav>
-                
 
 
-                <ModalLogin/>
+                <CardWidjet />
+                <ModalLogin />
             </Container>
         </Navbar>
     </>
