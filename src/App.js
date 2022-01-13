@@ -5,7 +5,7 @@ import NavBar from './components/NavBar';
 import Particles from "react-tsparticles";
 import Title from './components/Title';
 import { useState, useEffect } from 'react';
-import { Button } from 'react-bootstrap'
+import ItemCount from './components/ItemCount'
 
 function App() {
   const [name, setName] = useState("Eren")
@@ -13,14 +13,14 @@ function App() {
 
 
   useEffect(() => {
-    console.log("Cambie el item de cantidad","Ahora tengo",itemsQty);
-    console.log("cambie en la fecha ",new Date())
+    console.log("Cambie el item de cantidad", "Ahora tengo", itemsQty);
+    console.log("cambie en la fecha ", new Date())
     return () => {
       console.clear()
       console.log("Se desmonto el componente")
-     
+
     }
-  },[itemsQty])
+  }, [itemsQty])
 
 
 
@@ -64,30 +64,14 @@ function App() {
         }}
       />
       <header className="App-header">
-        
+
         <img src={logo} className="App-logo hover-zoom" alt="logo" />
         La Bicharraka
         <a>Contemplad a la reina de los lagartos</a>
       </header>
-      
+
       <NavBar />
-      
-
-
-      <div>
-        <Button onClick={() => setName("Mika")} variant="primary">Cambiar nombre</Button>
-        <h1>
-          {name}
-        </h1>
-      </div>
-      <div>
-        <Button onClick={() => setItemsQty(itemsQty + 1)} variant="primary">+</Button>
-        <Button onClick={() => setItemsQty(itemsQty - 1)} variant="primary">-</Button>
-        <h1>
-          {itemsQty}
-        </h1>
-      </div>
-
+      <ItemCount className='text-center align-items-center justify-content-center p-' />
       <Footer mensaje="Hola Soy el footer de los 80" />
 
     </div>
