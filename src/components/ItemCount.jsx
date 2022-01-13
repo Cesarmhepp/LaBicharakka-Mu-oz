@@ -5,7 +5,7 @@ import '../App.css';
 import Particles from "react-tsparticles";
 const ItemCount = () => {
     const [stock, setStock] = useState(10)
-    const [itemsQty, setItemsQty] = useState(0);
+    const [itemsQty, setItemsQty] = useState(1);
 
 
     useEffect(() => {
@@ -41,7 +41,7 @@ const ItemCount = () => {
                     <h1>
                         {itemsQty}
                     </h1>
-                    <Button onClick={() => itemsQty > 0 ? setItemsQty(itemsQty - 1) : null} variant="primary" className='bg-one m-2'> - </Button>
+                    <Button onClick={() => itemsQty > 1 ? setItemsQty(itemsQty - 1) : null} variant="primary" className='bg-one m-2'> - </Button>
 
                 </div>
             </Modal.Body>
