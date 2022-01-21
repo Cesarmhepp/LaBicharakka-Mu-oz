@@ -1,12 +1,13 @@
 body {
   margin: 0;
+  font-family: 'Roboto', sans-serif;
   font-family: 'Roboto Mono', monospace;
-  background:linear-gradient(89deg,#FF5EDF 0%,#04C8DE 100%)
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 button{

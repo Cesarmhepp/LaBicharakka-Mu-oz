@@ -10,8 +10,8 @@ const ModalLogin = () => {
     const handleShow = () => setShow(true)
 
     return <>
-        <Button variant="primary bg-one d-flex" onClick={handleShow} className="outline-success">
-            <a><FiUser className='' />Login</a>
+        <Button variant="warning" onClick={handleShow} className="outline-success" style={{marginLeft:10}}>
+            <a><FiUser/></a>Iniciar
         </Button>
         <Modal show={show} onHide={handleClose} >
             <Modal.Header closeButton className='bg-warning' >

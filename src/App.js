@@ -2,77 +2,40 @@ import logo from './components/img/4415.png';
 import './App.css';
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
-import Particles from "react-tsparticles";
-import Title from './components/Title';
 import { useState, useEffect } from 'react';
 import ItemCount from './components/ItemCount'
+import getProductsFromCategory from './services/Products';
+import ItemListContainer from './components/ItemListContainer'
 
 function App() {
-  const [name, setName] = useState("Eren")
-  const [itemsQty, setItemsQty] = useState(0);
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(false);
 
 
   useEffect(() => {
-    console.log("Cambie el item de cantidad", "Ahora tengo", itemsQty);
-    console.log("cambie en la fecha ", new Date())
-    return () => {
-      console.clear()
-      console.log("Se desmonto el componente")
-
-    }
-  }, [itemsQty])
-
-
-
+    let mounted = true;
+    setLoading(true);
+    getProductsFromCategory("MLC", "MLC1055").then(items => {
+      if (mounted) {
+        console.log(items.results)
+        setProducts(items.results)
+        setTimeout(() => {
+          setLoading(false)
+        }, 3000);
+      }
+    })
+    return () => mounted = false;
+  }, [])
 
   return (
     <div className="App">
-      <Particles className='particles'
-        id="tsparticles"
-        options={{
-          fpsLimit: 60,
-          particles: {
-            color: {
-              value: "#ffffff",
-            },
-            links: {
-              color: "#ffffff",
-              distance: 150,
-              enable: true,
-              opacity: 0.5,
-              width: 1,
-            },
-            collisions: {
-              enable: false,
-            },
-            move: {
-              direction: "none",
-              enable: true,
-              outMode: "bounce",
-              random: false,
-              speed: 0.5,
-              straight: false,
-            },
-            opacity: {
-              value: 0.5,
-            },
-            shape: {
-              type: "circle",
-            }
-          },
-          detectRetina: true,
-        }}
-      />
-      <header className="App-header">
-
-        <img src={logo} className="App-logo hover-zoom" alt="logo" />
-        La Bicharraka
-        <a>Contemplad a la reina de los lagartos</a>
-      </header>
-
       <NavBar />
-      <ItemCount className='text-center align-items-center justify-content-center p-' />
-      <Footer mensaje="Hola Soy el footer de los 80" />
+      <div>
+        <ItemListContainer products={products} />
+        <ItemCount className='text-center align-items-center justify-content-center' />
+        <Footer mensaje="Hola Soy el footer de los 80" />
+      </div>
+
 
     </div>
   );

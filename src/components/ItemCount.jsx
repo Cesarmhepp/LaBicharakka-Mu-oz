@@ -1,8 +1,7 @@
-import { Form, Button, Modal, Row, Col } from 'react-bootstrap'
+import { Button, Modal } from 'react-bootstrap'
 import { React, useState, useEffect } from 'react'
-import { FiUser } from 'react-icons/fi'
+
 import '../App.css';
-import Particles from "react-tsparticles";
 const ItemCount = () => {
     const [stock, setStock] = useState(10)
     const [itemsQty, setItemsQty] = useState(1);
