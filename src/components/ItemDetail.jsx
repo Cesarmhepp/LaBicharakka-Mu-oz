@@ -1,107 +1,74 @@
-import { Button, Modal, Image, Row, Col, Table } from 'react-bootstrap'
+import { Button, Image, Row, Col, Table, BsCart2 } from 'react-bootstrap'
 import { useState } from 'react';
 
 const ItemDetail = ({ item }) => {
-	const { id, title, price, attributes, available_quantity, condition, thumbnail, seller_address } = item;
-	const [show, setShow] = useState(false);
+	const { id, title, price, description, attributes, available_quantity, condition, thumbnail, seller_address, pictures } = item;
+	const [itemsQty, setItemsQty] = useState(1);
 
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
 
+	console.log("mostrando items", item)
 	return (
 		<>
-			<Button onClick={handleShow} variant="warning">
-				Detalles
-			</Button>
+			<Row style={{ marginLeft: 100, marginRight: 100 }}>
+				<Col xs={1}>
+					{pictures.slice(0, 4).map(picture => { return (<Image src={picture.secure_url} style={{ objectFit: "contain", width: '80%' }} />) })}
+				</Col>
+				<Col xs={3}>
+					{pictures.length > 0 ? <Image src={pictures[0].secure_url} style={{ objectFit: "contain", width: '100%' }} /> : null}
 
-			<Modal show={show} onHide={handleClose} size='lg'>
-				<div className='bg-details'>
-					<Modal.Header closeButton>
-						<Modal.Title>Detalles</Modal.Title>
-					</Modal.Header>
-					<Modal.Body>
-						<Row>
-							<Col xs={1}>
-								<Image src={thumbnail} style={{ objectFit: "contain", width: '100%', height: '100px' }} />
-							</Col>
-							<Col xs={4}>
-								<Image src={thumbnail} style={{ objectFit: "contain", width: '100%' }} />
-							</Col>
-							<Col xs={7} >
-								<h3 style={{ textAlign: "center" }}>{title}</h3>
-								<Table striped bordered hover size="sm" responsive className='bg-one' >
-									<tbody>
-										<tr>
-											<td>Marca</td>
-											<td>{attributes[0].value_name}</td>
-										</tr>
-										<tr>
-											<td>Modelo</td>
-											<td>{attributes[1].value_name}</td>
+				</Col>
+				<Col xs={8} style={{ textAlign: "left" }} >
+					<h3 style={{ textAlign: "left" }}>{title}</h3>
+					<Table size="sm" responsive  >
+						<tbody>
+							<tr>
+								<td>Precio</td>
+								<td>${price}</td>
+							</tr>
+							<tr>
+								<td>Stock</td>
+								<td>{available_quantity}</td>
+							</tr>
+						</tbody>
+					</Table>
 
-										</tr>
-										<tr>
-											<td>Precio</td>
-											<td>${price}</td>
-										</tr>
-										<tr>
-											<td>Stock</td>
-											<td>{available_quantity}</td>
-										</tr>
-									</tbody>
-								</Table>
-								<Table striped bordered hover responsive className='bg-one'>
-									<tbody>
-										<tr>
-											<th>
-												Caractericas
-											</th>
-										</tr>
-										<tr>
-											<td>
-												Condicion
-											</td>
-											<td>
-											{condition}
-											</td>
-										</tr>
-										<tr>
-											<td>
-												Procesador
-											</td>
-											<td>
-											{attributes[2].value_name}
-											</td>
-										</tr>
-										<tr>
-											<td>
-												Direccion
-											</td>
-											<td>
-											{seller_address.country.name}
-											<br/>
-											{seller_address.state.name}
-											<br/>
-											{seller_address.city.name}
-											</td>
-										</tr>
-									</tbody>
-								</Table>
+					<Button style={{ marginRight: 10 }} variant="warning" onClick={() => itemsQty > available_quantity ? setItemsQty(itemsQty - 1) : null}> - </Button>
+					<Button variant='warning'>Añadir {itemsQty}</Button>
 
-							</Col>
-						</Row>
-					</Modal.Body>
-					<Modal.Footer>
-						<Button variant="warning" onClick={handleClose}>
-							Cerrar
-						</Button>
-						<Button variant="custom" className='bg-one' onClick={handleClose}>
-							Añadir
-						</Button>
-					</Modal.Footer>
-				</div>
+					<Button style={{ marginLeft: 10 }} variant="warning" onClick={() => itemsQty <= available_quantity ? setItemsQty(itemsQty + 1) : null}> + </Button>
 
-			</Modal>
+					<Col xs={12} style={{ textAlign: "left", marginTop: 50 }}>
+						<h5>Caracteristicas</h5>
+						<Table size="sm" responsive>
+							<tbody>
+								{attributes.slice(0, 9).map(attribute => {
+									return (
+										<>
+											<tr>
+												<td>{attribute.name}</td>
+												<td>{attribute.value_name}</td>
+											</tr>
+										</>
+									)
+								})}
+							</tbody>
+						</Table>
+
+					</Col>
+
+				</Col>
+
+
+				<Col style={{ textAlign: "left", marginBottom: 50 }}>
+					<h3>Descripción</h3>
+					{description}
+				</Col>
+
+			</Row>
+
+
+
+
 		</>
 	);
 
