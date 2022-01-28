@@ -1,10 +1,19 @@
-import { Button, Image, Row, Col, Table, BsCart2 } from 'react-bootstrap'
+import { Image, Row, Col, Table } from 'react-bootstrap'
 import { useState } from 'react';
-
+import { Link } from 'react-router-dom'
+import ItemCount from './ItemCount'
+import Cart from './Cart'
 const ItemDetail = ({ item }) => {
 	const { id, title, price, description, attributes, available_quantity, condition, thumbnail, seller_address, pictures } = item;
-	const [itemsQty, setItemsQty] = useState(1);
+	const [itemsQty, setItemsQty] = useState(0);
 
+	const onAdd = ({ quantityToAdd }) => {
+		return (
+			<Link to={"/cart"}><Cart quantityToAdd={quantityToAdd} /></Link>
+		)
+
+
+	}
 
 	console.log("mostrando items", item)
 	return (
@@ -32,10 +41,8 @@ const ItemDetail = ({ item }) => {
 						</tbody>
 					</Table>
 
-					<Button style={{ marginRight: 10 }} variant="warning" onClick={() => itemsQty > available_quantity ? setItemsQty(itemsQty - 1) : null}> - </Button>
-					<Button variant='warning'>Añadir {itemsQty}</Button>
+					<ItemCount stock={available_quantity} itemsQty={itemsQty} setItemsQty={setItemsQty} onAdd={onAdd} />
 
-					<Button style={{ marginLeft: 10 }} variant="warning" onClick={() => itemsQty <= available_quantity ? setItemsQty(itemsQty + 1) : null}> + </Button>
 
 					<Col xs={12} style={{ textAlign: "left", marginTop: 50 }}>
 						<h5>Caracteristicas</h5>

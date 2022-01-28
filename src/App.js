@@ -5,6 +5,7 @@ import Home from './components/Home'
 import NoPage from './components/NoPage'
 import Layout from './components/Layout'
 import ItemDetailContainer from './components/ItemDetailContainer'
+import Cart from './components/Cart'
 
 const App = () => {
 
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/" index element={<Home />} />
           <Route path="/product/:id" element={<ItemDetailContainer/>} />
           <Route path="/*" exact element={<NoPage />} />
+          <Route path="/cart" exact element={<Cart />} />
         </Route>
       </Routes>
     </BrowserRouter>

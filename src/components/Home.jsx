@@ -26,7 +26,6 @@ const Home=()=> {
   return (
     <div>
         <ItemListContainer products={products} />
-        <ItemCount className='text-center align-items-center justify-content-center' />
     </div>
   );
 }

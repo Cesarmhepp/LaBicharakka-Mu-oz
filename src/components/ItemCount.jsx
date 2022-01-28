@@ -1,10 +1,10 @@
-import { Button, Modal } from 'react-bootstrap'
-import { React, useState, useEffect } from 'react'
+import { Button } from 'react-bootstrap'
+import { React, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import '../App.css';
-const ItemCount = () => {
-    const [stock, setStock] = useState(10)
-    const [itemsQty, setItemsQty] = useState(1);
+const ItemCount = ({ stock, itemsQty, setItemsQty, onAdd }) => {
+
 
 
     useEffect(() => {
@@ -17,42 +17,14 @@ const ItemCount = () => {
         }
     }, [itemsQty])
 
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true)
+
 
     return <>
-        <Button variant="primary" onClick={handleShow} className="bg-one mb-5">
-            <a>Contador</a>
-        </Button>
-        <Modal show={show} onHide={handleClose} >
 
-            <Modal.Header closeButton className='bg-one' >
+        <Button style={{ marginRight: 10 }} variant="warning" onClick={() => itemsQty > 0 ? setItemsQty(itemsQty - 1) : null}> - </Button>
+        <Link to={"/cart"}><Button variant='warning' onClick={() => onAdd(itemsQty)}>Añadir {itemsQty} </Button> </Link>
+        <Button style={{ marginLeft: 10 }} variant="warning" onClick={() => itemsQty < stock ? setItemsQty(itemsQty + 1) : null}> + </Button>
 
-                <Modal.Title>Contador</Modal.Title>
-            </Modal.Header>
-            <Modal.Body className='bg-one'>
-                <h3 className='d-flex align-items-center justify-content-center'>
-                    Stock disponible: {stock}
-                </h3>
-                <div className='d-flex align-items-center justify-content-center'>
-                    <Button onClick={() => stock > itemsQty ? setItemsQty(itemsQty + 1) : null} variant="primary" className='bg-one m-2'> + </Button>
-                    <h1>
-                        {itemsQty}
-                    </h1>
-                    <Button onClick={() => itemsQty > 1 ? setItemsQty(itemsQty - 1) : null} variant="primary" className='bg-one m-2'> - </Button>
-
-                </div>
-            </Modal.Body>
-            <Modal.Footer className='bg-one'>
-                <Button variant="secondary" className='bg-one' onClick={handleClose}>
-                    Cerrar
-                </Button>
-                <Button variant="primary" className='bg-one' onClick={handleClose}>
-                    Iniciar
-                </Button>
-            </Modal.Footer>
-        </Modal>
 
     </>
 }
