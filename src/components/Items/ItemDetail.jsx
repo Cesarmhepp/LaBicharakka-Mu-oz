@@ -2,7 +2,7 @@ import { Image, Row, Col, Table } from 'react-bootstrap'
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
 import ItemCount from './ItemCount'
-import Cart from './Cart'
+import Cart from '../Cart/Cart'
 const ItemDetail = ({ item }) => {
 	const { id, title, price, description, attributes, available_quantity, condition, thumbnail, seller_address, pictures } = item;
 	const [itemsQty, setItemsQty] = useState(0);

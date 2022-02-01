@@ -13,3 +13,7 @@ export const getProductDescription = (id) => {
         .then(data => data.json())
 }
 
+export const getCategories = (site) => {
+    return fetch(`https://api.mercadolibre.com/sites/${site}/categories`)
+        .then(data => data.json())
+}

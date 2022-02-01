@@ -3,20 +3,15 @@ import React, { useState } from 'react'
 import logo from './img/logo2.png'
 import { BsSearch } from 'react-icons/bs';
 import ModalLogin from './ModalLogin'
-import CardWidjet from './CardWidjet'
+import CardWidjet from './Cart/CardWidjet'
 import {Link, NavLink} from 'react-router-dom'
 
-const NavBar = () => {
-
-    const [search, setOnSearch]=useState(false)
+const NavBar = ({categories}) => {
 
     const onSearchChange=(event)=>{
         event.preventDefault();
         console.log(event.target.value)
         let query=event.target.value
-
-
-
       // if(query.length>6){
 
        // }
@@ -41,13 +36,16 @@ const NavBar = () => {
 
                 <Nav className="me-auto">
                     <NavLink to="/" className="nav-link">Inicio</NavLink>
-                    <NavLink to={"/categories"} className="nav-link" activeClassName="active">Categorias</NavLink>
-                    <NavDropdown title="Productos" id="nav-dropdown" >
-                        <NavDropdown.Item href="#action3" >Poleras </NavDropdown.Item>
-                        <NavDropdown.Item href="#action4" >Accesorios</NavDropdown.Item>
-                        <NavDropdown.Item href="#action4">Calzado</NavDropdown.Item>
 
-                    </NavDropdown>
+                    <NavDropdown title={"Categorias"} id="basic-nav-dropdown">                      
+                        {categories.slice(0,6).map(category => { return (
+                        <NavDropdown.Item key={category.id} 
+                        as={Link} 
+                        to={`/category/${category.id}`}>
+                            {category.name}
+                        </NavDropdown.Item>)})}
+                        <NavDropdown.Item as={Link} to={`/categories`}>Ver todas</NavDropdown.Item>                          
+                    </NavDropdown> 
                     <Form className="d-flex" style={{position:"relative"}}>
                         <FormControl
                             type="search"

@@ -4,7 +4,7 @@ import { BsCart2 } from 'react-icons/bs';
 
 const CardWidjet = () => {
 
-    const [itemsQtyCard, setitemsQtyCard] = useState(3);
+    const [itemsQtyCard, setitemsQtyCard] = useState();
 
     return <>
         <Button variant="warning" onClick={()=>setitemsQtyCard(itemsQtyCard+1)}>

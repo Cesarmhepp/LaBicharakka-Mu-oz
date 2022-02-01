@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import ItemCount from './ItemCount'
+import ItemCount from './Items/ItemCount'
 import {getProductsFromCategory} from '../services/Products';
-import ItemListContainer from './ItemListContainer'
+import ItemListContainer from './Items/ItemListContainer'
 
 const Home=()=> {
   const [products, setProducts] = useState([])
