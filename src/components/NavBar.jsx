@@ -4,17 +4,18 @@ import logo from './img/logo2.png'
 import { BsSearch } from 'react-icons/bs';
 import ModalLogin from './ModalLogin'
 import CardWidjet from './Cart/CardWidjet'
-import {Link, NavLink} from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
+import { CartProvider } from './Context/CartContext';
 
-const NavBar = ({categories}) => {
+const NavBar = ({ categories }) => {
 
-    const onSearchChange=(event)=>{
+    const onSearchChange = (event) => {
         event.preventDefault();
         console.log(event.target.value)
-        let query=event.target.value
-      // if(query.length>6){
+        let query = event.target.value
+        // if(query.length>6){
 
-       // }
+        // }
     }
 
     return <>
@@ -37,16 +38,18 @@ const NavBar = ({categories}) => {
                 <Nav className="me-auto">
                     <NavLink to="/" className="nav-link">Inicio</NavLink>
 
-                    <NavDropdown title={"Categorias"} id="basic-nav-dropdown">                      
-                        {categories.slice(0,6).map(category => { return (
-                        <NavDropdown.Item key={category.id} 
-                        as={Link} 
-                        to={`/category/${category.id}`}>
-                            {category.name}
-                        </NavDropdown.Item>)})}
-                        <NavDropdown.Item as={Link} to={`/categories`}>Ver todas</NavDropdown.Item>                          
-                    </NavDropdown> 
-                    <Form className="d-flex" style={{position:"relative"}}>
+                    <NavDropdown title={"Categorias"} id="basic-nav-dropdown">
+                        {categories.slice(0, 6).map(category => {
+                            return (
+                                <NavDropdown.Item key={category.id}
+                                    as={Link}
+                                    to={`/category/${category.id}`}>
+                                    {category.name}
+                                </NavDropdown.Item>)
+                        })}
+                        <NavDropdown.Item as={Link} to={`/categories`}>Ver todas</NavDropdown.Item>
+                    </NavDropdown>
+                    <Form className="d-flex" style={{ position: "relative" }}>
                         <FormControl
                             type="search"
                             onChange={onSearchChange}
@@ -54,15 +57,16 @@ const NavBar = ({categories}) => {
                             className="me-2"
                             aria-label="Buscar"
                         />
-                        <div style={{position:"absolute", left:0, top:0, wditrh:200, height:300}}></div>
+                        <div style={{ position: "absolute", left: 0, top: 0, wditrh: 200, height: 300 }}></div>
                         <Button variant="warning"><BsSearch /></Button>
                     </Form>
 
 
                 </Nav>
 
-
-                <CardWidjet />
+                <CartProvider>
+                    <CardWidjet />
+                </CartProvider>
                 <ModalLogin />
             </Container>
         </Navbar>

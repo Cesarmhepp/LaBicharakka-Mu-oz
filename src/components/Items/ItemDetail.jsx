@@ -1,21 +1,22 @@
-import { Image, Row, Col, Table } from 'react-bootstrap'
-import { useState } from 'react';
+import { Image, Row, Col, Table, Button } from 'react-bootstrap'
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom'
 import ItemCount from './ItemCount'
 import Cart from '../Cart/Cart'
+import { CartContext } from '../Context/CartContext';
 const ItemDetail = ({ item }) => {
-	const { id, title, price, description, attributes, available_quantity, condition, thumbnail, seller_address, pictures } = item;
+	const { id, title, price, description, attributes, available_quantity, pictures } = item;
 	const [itemsQty, setItemsQty] = useState(0);
+	const [show, setShow] = useState(false)
 
 	const onAdd = ({ quantityToAdd }) => {
 		return (
 			<Link to={"/cart"}><Cart quantityToAdd={quantityToAdd} /></Link>
 		)
-
-
 	}
 
-	console.log("mostrando items", item)
+	const { AddItem } = useContext(CartContext);
+
 	return (
 		<>
 			<Row style={{ marginLeft: 100, marginRight: 100 }}>
@@ -41,7 +42,17 @@ const ItemDetail = ({ item }) => {
 						</tbody>
 					</Table>
 
-					<ItemCount stock={available_quantity} itemsQty={itemsQty} setItemsQty={setItemsQty} onAdd={onAdd} />
+					<Button style={{ marginRight: 10 }} variant="warning" onClick={() => itemsQty > 0 ? setItemsQty(itemsQty - 1) : null}> - </Button>
+					<a>
+						{itemsQty}
+					</a>
+					<Button style={{ marginLeft: 10 }} variant="warning" onClick={() => itemsQty < available_quantity ? setItemsQty(itemsQty + 1) : null}> + </Button>
+
+					<Button style={{ marginLeft: 10 }} variant="primary" onClick={() => { AddItem(item, itemsQty); setShow(true) }}> Añadir</Button>
+
+					{
+						show ? <Link to={"/cart"}><Button style={{ marginLeft: 10 }} variant='primary' onClick={() => onAdd(itemsQty)}>Finalizar</Button> </Link> : null
+					}
 
 
 					<Col xs={12} style={{ textAlign: "left", marginTop: 50 }}>

@@ -8,20 +8,21 @@ import ItemDetailContainer from './components/Items/ItemDetailContainer'
 import Cart from './components/Cart/Cart'
 import Categories from './components/Category/Categories';
 import Category from './components/Category/Category';
+import { CartContext, CartProvider } from './components/Context/CartContext';
 
 const App = () => {
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/" index element={<Home />} />
-          <Route path="/product/:id" element={<ItemDetailContainer/>} />
-          <Route path="/*" exact element={<NoPage />} />
-          <Route path="/cart" exact element={<Cart />} />
-          <Route path="/category/:id" element={<Category/>}/>
-          <Route path="/categories" element={<Categories/>}/>
-        </Route>
+          <Route path="/" element={<Layout />}>
+            <Route path="/" index element={<Home />} />
+            <Route path="/product/:id" element={<ItemDetailContainer />} />
+            <Route path="/*" exact element={<NoPage />} />
+            <Route path="/cart" exact element={<Cart />} />
+            <Route path="/category/:id" element={<Category />} />
+            <Route path="/categories" element={<Categories />} />
+          </Route>
       </Routes>
     </BrowserRouter>
   );

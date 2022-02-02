@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { getProductDescription, getProductDetail } from '../../services/Products';
+import { CartProvider } from "../Context/CartContext";
 import ItemDetail from "./ItemDetail";
 
 const ItemDetailContainer = () => {
@@ -13,7 +14,7 @@ const ItemDetailContainer = () => {
             .then(results => {
                 console.log("Mostrando resultados ", results)
                 let item = results[0]
-                item.description=results[1].plain_text
+                item.description = results[1].plain_text
                 if (mounted) {
                     setProduct(item)
                 }
@@ -24,7 +25,11 @@ const ItemDetailContainer = () => {
     return (
         <>
             <div className="item-detail-container">
-                {product ? <ItemDetail item={product} /> : null}
+                {product ?
+                    <CartProvider>
+                        <ItemDetail item={product} />
+                    </CartProvider>
+                    : null}
             </div>
 
         </>
