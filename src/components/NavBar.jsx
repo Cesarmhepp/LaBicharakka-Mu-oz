@@ -64,9 +64,8 @@ const NavBar = ({ categories }) => {
 
                 </Nav>
 
-                <CartProvider>
                     <CardWidjet />
-                </CartProvider>
+
                 <ModalLogin />
             </Container>
         </Navbar>
