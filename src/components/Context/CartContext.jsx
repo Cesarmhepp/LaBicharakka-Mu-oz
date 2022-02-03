@@ -24,7 +24,6 @@ export const CartProvider = ({ children }) => {
         }
 
         isAlreadyIn ? console.log("El articulo ya esta en el carrito") : setCartItems([...cartItems, product])
-        console.log("Items en el carrito",cartItems)
     }
 
     const RemoveItem = (product) => {

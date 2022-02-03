@@ -6,7 +6,7 @@ import Cart from '../Cart/Cart'
 import { CartContext } from '../Context/CartContext';
 const ItemDetail = ({ item }) => {
 	const { id, title, price, description, attributes, available_quantity, pictures } = item;
-	const [itemsQty, setItemsQty] = useState(0);
+	const [itemsQty, setItemsQty] = useState(1);
 	const [show, setShow] = useState(false)
 
 	const onAdd = ({ quantityToAdd }) => {
@@ -15,7 +15,9 @@ const ItemDetail = ({ item }) => {
 		)
 	}
 
-	const { AddItem } = useContext(CartContext);
+	const { AddItem, isInCart, cartItems } = useContext(CartContext);
+	console.log("Lista en el carrito: ",cartItems)
+
 
 	return (
 		<>
@@ -42,7 +44,7 @@ const ItemDetail = ({ item }) => {
 						</tbody>
 					</Table>
 
-					<Button style={{ marginRight: 10 }} variant="warning" onClick={() => itemsQty > 0 ? setItemsQty(itemsQty - 1) : null}> - </Button>
+					<Button style={{ marginRight: 10 }} variant="warning" onClick={() => itemsQty > 1 ? setItemsQty(itemsQty - 1) : null}> - </Button>
 					<a>
 						{itemsQty}
 					</a>

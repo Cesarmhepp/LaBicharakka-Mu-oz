@@ -5,8 +5,8 @@ import { CartContext } from '../../components/Context/CartContext'
 
 const CardWidjet = () => {
 
-    const { cartItems } = useContext(CartContext)
 
+    const { AddItem, isInCart, cartItems } = useContext(CartContext);
     return <>
         <Button variant="warning">
             <a><BsCart2 /></a>

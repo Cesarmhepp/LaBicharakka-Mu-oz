@@ -13,8 +13,9 @@ import { CartContext, CartProvider } from './components/Context/CartContext';
 const App = () => {
 
   return (
-    <BrowserRouter>
-      <Routes>
+    <CartProvider>
+      <BrowserRouter>
+        <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="/" index element={<Home />} />
             <Route path="/product/:id" element={<ItemDetailContainer />} />
@@ -23,8 +24,10 @@ const App = () => {
             <Route path="/category/:id" element={<Category />} />
             <Route path="/categories" element={<Categories />} />
           </Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </CartProvider>
+
   );
 }
 export default App;

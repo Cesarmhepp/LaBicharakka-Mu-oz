@@ -26,9 +26,8 @@ const ItemDetailContainer = () => {
         <>
             <div className="item-detail-container">
                 {product ?
-                    <CartProvider>
                         <ItemDetail item={product} />
-                    </CartProvider>
+
                     : null}
             </div>
 
