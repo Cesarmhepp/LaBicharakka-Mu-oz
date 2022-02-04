@@ -6,7 +6,22 @@ export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([])
 
     const CartItemsQnt = () => {
-        return cartItems.length
+        var qty = 0;
+        cartItems.map((item) => (
+            qty = qty + item.qty
+        ))
+
+        return qty
+    }
+
+    const totalPay = () => {
+
+        var totalPay = 0;
+        cartItems.map((item) => (
+            totalPay = totalPay + item.qty * item.price
+        ))
+
+        return totalPay
     }
 
     const AddItem = (product, qty) => {
@@ -15,7 +30,7 @@ export const CartProvider = ({ children }) => {
         var isAlreadyIn = false;
 
         for (let i = 0; i < cartItems.length; i++) {
-            if (qty > 0 && qty!==null) {
+            if (qty > 0 && qty !== null) {
                 if (cartItems[i].id === product.id) {
                     isAlreadyIn = true;
                     break;
@@ -48,7 +63,7 @@ export const CartProvider = ({ children }) => {
 
 
     return (
-        <CartContext.Provider value={{ cartItems, CartItemsQnt, AddItem, RemoveItem, clear, isInCart }}>
+        <CartContext.Provider value={{ cartItems, CartItemsQnt, AddItem, RemoveItem, clear, isInCart, totalPay }}>
             {children}
         </CartContext.Provider>
     )

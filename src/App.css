@@ -67,6 +67,8 @@ background-size: 40px 60px;
 }
 
 
+@import url('https://fonts.googleapis.com/css2?family=Comforter&display=swap');
+
 .bg-one{
   background: linear-gradient(to right, #FFA0E3, #ed83cd);
   opacity: 80%;
@@ -83,4 +85,9 @@ background-size: 40px 60px;
 
 txt-size{
   font-size: calc(10px + 2vmin);
+}
+
+.title-logo{
+font-family: 'Comforter', cursive;
+font-size: 'larger';
 }

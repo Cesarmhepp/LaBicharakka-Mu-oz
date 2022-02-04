@@ -1,4 +1,3 @@
-import logo from './components/img/4415.png';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home'
@@ -8,7 +7,7 @@ import ItemDetailContainer from './components/Items/ItemDetailContainer'
 import Cart from './components/Cart/Cart'
 import Categories from './components/Category/Categories';
 import Category from './components/Category/Category';
-import { CartContext, CartProvider } from './components/Context/CartContext';
+import { CartProvider } from './components/Context/CartContext';
 
 const App = () => {
 

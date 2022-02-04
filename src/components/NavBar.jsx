@@ -1,21 +1,17 @@
 import { Navbar, Nav, Container, Form, FormControl, Button, NavDropdown } from 'react-bootstrap'
-import React, { useState } from 'react'
+import React from 'react'
 import logo from './img/logo2.png'
 import { BsSearch } from 'react-icons/bs';
 import ModalLogin from './ModalLogin'
 import CardWidjet from './Cart/CardWidjet'
 import { Link, NavLink } from 'react-router-dom'
-import { CartProvider } from './Context/CartContext';
+
 
 const NavBar = ({ categories }) => {
 
     const onSearchChange = (event) => {
         event.preventDefault();
         console.log(event.target.value)
-        let query = event.target.value
-        // if(query.length>6){
-
-        // }
     }
 
     return <>
