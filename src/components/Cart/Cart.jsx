@@ -18,15 +18,15 @@ const Cart = ({ quantityToAdd }) => {
         <Container>
             <div>
                 <Row>
-                    <Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <Col>
 
                         {
                             CartItemsQnt() !== 0 ?
-                                <Table striped bordered hover responsive size="sm">
+                                <Table striped bordered hover responsive>
                                     <thead>
-                                        <tr>
+                                        <tr style={{verticalAlign:'middle'}}>
                                             <th></th>
-                                            <th style={{ textAlign: 'center', justifyContent: 'center' }}>Producto</th>
+                                            <th style={{textAlign:'center'}}>Producto</th>
                                             <th>Cantidad</th>
                                             <th>Precio unitario</th>
                                             <th>Precio total</th>
@@ -37,28 +37,28 @@ const Cart = ({ quantityToAdd }) => {
                                         {
                                             cartItems.map((item, index) => (
                                                 <>
-                                                    <tr>
+                                                    <tr style={{verticalAlign:'middle'}}>
                                                         <td>{index + 1}</td>
-                                                        <td><Image src={item.pictures[0].secure_url} style={{ width: '3%', marginRight: 15 }} />{item.title.match(/^(\S+)\s(.*)/).slice(2)}</td>
-                                                        <td style={{ textAlign: 'center', justifyContent: 'center' }}>{item.qty}</td>
-                                                        <td style={{ textAlign: 'center', justifyContent: 'center' }}>{item.price}</td>
-                                                        <td style={{ textAlign: 'center', justifyContent: 'center' }}>{item.qty * item.price}</td>
-                                                        <td style={{ textAlign: 'center', justifyContent: 'center' }}><Button variant="warning" onClick={() => RemoveItem(item)}>X</Button></td>
+                                                        <td><Image src={item.pictures[0].secure_url} style={{ width: '5%', marginRight: 15 }} />{item.title}</td>
+                                                        <td style={{ textAlign: 'center'}}>{item.qty}</td>
+                                                        <td style={{ textAlign: 'center'}}>{item.price}</td>
+                                                        <td style={{ textAlign: 'center'}}>{item.qty * item.price}</td>
+                                                        <td style={{ textAlign: 'center'}}><Button variant="danger" onClick={() => RemoveItem(item)}>X</Button></td>
                                                     </tr>
                                                 </>
                                             ))
                                         }
-                                        <tr>
+                                        <tr style={{verticalAlign:'middle'}}>
                                             <td></td>
                                             <td></td>
-
-                                            <td style={{ textAlign: 'center', justifyContent: 'center' }}>Total a pagar</td>
-                                            <td style={{ textAlign: 'center', justifyContent: 'center' }}>
+                                            <td></td>
+                                            <td style={{ textAlign: 'center', fontWeight:'bold' }}>Total</td>
+                                            <td style={{ textAlign: 'center', fontWeight:'bold' }}>
                                                 {
                                                     totalPay()
                                                 }
                                             </td>
-                                            <td style={{ textAlign: 'center', justifyContent: 'center' }}><Button variant="success">Pagar</Button></td>
+                                            <td  style={{ textAlign: 'center', fontWeight:'bold' }}><Button variant="success">Pagar</Button></td>
                                         </tr>
 
 
@@ -68,7 +68,7 @@ const Cart = ({ quantityToAdd }) => {
                                     <Container>
                                         <Row>
                                             <Col xs={12}>
-                                                <Image src={SadImg} style={{ width: '20%', marginRight: 15, marginBottom: 30, marginTop: 20 }} />
+                                                <Image src={SadImg} style={{ width: '20%', marginRight: 15, marginBottom: 30,marginTop:20 }} />
                                             </Col>
                                             <Col xs={12} style={{ marginBottom: 20 }}>
                                                 <h3>Nada en el carrito... aun.</h3>
