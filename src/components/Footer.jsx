@@ -3,7 +3,7 @@ import { BsFacebook, BsInstagram,BsGoogle,BsTwitter,BsLinkedin } from 'react-ico
 const Footer = () => {
 
     return <Fragment>
-        <footer className="page-footer font-small blue pt-4 text-dark border-top bg-details">
+        <footer className="page-footer font-small blue pt-4 text-dark border-top bg-card">
             <div className="container-fluid text-center text-md-left">
                 <section class="mb-4">
 
@@ -25,7 +25,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-copyright text-center py-3">© 2022 Copyright:
-            <a href=""  style={{textDecoration:"none"}}> La Bicharraka</a>
+            <a href=""  style={{textDecoration:"none"}}> La Bichatech</a>
         </div>
 
     </footer></Fragment >

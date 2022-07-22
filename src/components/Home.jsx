@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import ItemCount from './Items/ItemCount'
-import {getProductsFromCategory} from '../services/Products';
+import { getProductsFromCategory } from '../services/Products';
 import ItemListContainer from './Items/ItemListContainer'
 
-const Home=()=> {
+const Home = () => {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false);
 
@@ -23,9 +22,12 @@ const Home=()=> {
     return () => mounted = false;
   }, [])
 
+
+
+
   return (
     <div>
-        <ItemListContainer products={products} />
+      <ItemListContainer products={products} />
     </div>
   );
 }

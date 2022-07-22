@@ -57,30 +57,23 @@ background-size: 40px 60px;
   height: 100%
 }
 
-.bg-card{
-  color:#00272B;
-  border-radius: 5rem;
-  border: 1px solid pink;
-  border-radius: 5px;
-  background-image: url("../bg_bggenerator_com.png");
-  height: 100%
-}
+
 
 
 @import url('https://fonts.googleapis.com/css2?family=Comforter&display=swap');
 
 .bg-one{
-  background: linear-gradient(to right, #FFA0E3, #ed83cd);
-  opacity: 80%;
-  border-color:lightslategray;
-  color:#00272B;
+  background: rgb(246,63,251);
+  background: linear-gradient(90deg, rgba(246,63,251,1) 0%, rgba(252,70,107,1) 48%);
+}
+
+.bg-card{
+  background-color: lightgray;
 }
 
 .bg-details{
   background-image: url("../bg_bggenerator_com.png");
 }
-
-
 
 
 txt-size{
@@ -90,4 +83,14 @@ txt-size{
 .title-logo{
 font-family: 'Comforter', cursive;
 font-size: 'larger';
+}
+
+@font-face{
+  font-family: anime-font;
+  src:url("components/ttf/Cookiemonster-gv11.ttf")
+}
+
+.anime-font{
+  font-family: anime-font;
+  color:black;
 }

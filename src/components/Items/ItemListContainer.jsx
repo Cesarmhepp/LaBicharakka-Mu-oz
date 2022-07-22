@@ -5,7 +5,7 @@ import ItemList from './ItemList'
 const ItemListContainer = ({ products }) => {
     return (
         <Container>
-            <Row xs={2} md={4} className='g-4 mt-1'>
+            <Row className='g-4 mt-1 align-content-center'>
                 <ItemList products={products} />
             </Row>
         </Container>

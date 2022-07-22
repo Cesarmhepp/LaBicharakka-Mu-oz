@@ -10,7 +10,7 @@ const ModalLogin = () => {
     const handleShow = () => setShow(true)
 
     return <>
-        <Button variant="warning" onClick={handleShow} className="outline-success" style={{marginLeft:10}}>
+        <Button variant="primary" onClick={handleShow} className="outline-success" style={{marginLeft:10}}>
             <a><FiUser/></a>Iniciar
         </Button>
         <Modal show={show} onHide={handleClose} >

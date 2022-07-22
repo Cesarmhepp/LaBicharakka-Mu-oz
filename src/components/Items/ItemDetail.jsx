@@ -21,7 +21,7 @@ const ItemDetail = ({ item }) => {
 
 	return (
 		<>
-			<Row style={{ marginLeft: 100, marginRight: 100 }}>
+			<Row className="me-5 ms-5 mt-5 mb-5 p-2">
 				<Col xs={1}>
 					{pictures.slice(0, 4).map(picture => { return (<Image src={picture.secure_url} style={{ objectFit: "contain", width: '80%' }} />) })}
 				</Col>

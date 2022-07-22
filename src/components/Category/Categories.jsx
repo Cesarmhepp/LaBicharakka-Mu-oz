@@ -22,9 +22,9 @@ const Categories = () => {
             {categories.map(category => {
                 return (
                     <Col xs={3}  style={{marginTop:10, marginBottom:10}}>
-                        <Card className="card bg-details">
+                        <Card className="card bg-card">
                             <Card.Title style={{ height: 80, paddingTop: 5 }}>{category.name}</Card.Title>
-                            <Button variant="warning" onClick={() => navigate(`/category/${category.id}`)}>Ver Catalogo</Button>
+                            <Button variant="primary" onClick={() => navigate(`/category/${category.id}`)}>Ver Catalogo</Button>
                         </Card>
                     </Col>
                 )

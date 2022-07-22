@@ -1,9 +1,25 @@
-import { useState, createContext } from "react"
+import { useState, createContext, useEffect } from "react"
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([])
+
+
+
+
+    useEffect(() => {
+
+        setCartItems(JSON.parse(window.localStorage.getItem('cartItems')))
+    }, [])
+
+    useEffect(() => {
+        window.localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }, [cartItems]);
+
+
+
+
 
     const CartItemsQnt = () => {
         var qty = 0;
